@@ -1,6 +1,6 @@
 @{
    RootModule        = 'SQL-Developer.psm1'
-   ModuleVersion     = '0.1'
+   ModuleVersion     = '0.2'
 
    RequiredModules   = @(
       'console'

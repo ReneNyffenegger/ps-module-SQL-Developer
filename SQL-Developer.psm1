@@ -63,12 +63,17 @@ function get-SQLDeveloperUserConnectionsFileName {
 
    $connectionsJsonFileName = "$userInfoDir/o.jdeveloper.db.connection/connections.json"
 
-   if (! (test-path $connectionsJsonFileName) ) {
-      write-textInConsoleErrorColor "Connection JOSN-file ($connectionsJsonFileName) not found."
-      return $null
+   if (test-path $connectionsJsonFileName) {
+      return $connectionsJsonFileName
    }
 
-   return $connectionsJsonFileName
+   $connectionsXMLfileName = "$userInfoDir/o.jdeveloper.db.connection/connections.xml"
+   if (test-path $connectionsXMLfileName) {
+      return $connectionsXMLfileName
+   }
+
+   write-textInConsoleErrorColor "Neither $connectionsJsonFileName nor $connectionsXMLfileName found"
+   return $null
 }
 
 function get-SQLDeveloperUserConnectionsPSObjects {
