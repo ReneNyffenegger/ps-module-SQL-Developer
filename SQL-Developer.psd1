@@ -1,6 +1,6 @@
 @{
    RootModule        = 'SQL-Developer.psm1'
-   ModuleVersion     = '0.2'
+   ModuleVersion     = '0.3'
 
    RequiredModules   = @(
       'console'
@@ -26,11 +26,12 @@
      'set-SQLDeveloper_NULL_text'                 , 'get-SQLDeveloper_NULL_text',
      'set-SQLDeveloper_NULL_color'                , 'get-SQLDeveloper_NULL_color',
 
-     'set-SQLDeveloperNewWorksheetConnection'     , 'get-SQLDeveloperNewWorksheetConnection',
+     'set-SQLDeveloperNewWorksheetConnection'     , 'get-SQLDeveloperNewWorksheetConnection'     ,
 
-     'set-SQLDeveloperUseThickDriver'             , 'get-SQLDeveloperUseThickDriver',
-     'set-SQLDeveloperStartupScript'              , 'get-SQLDeveloperStartupScript',
-     'set-SQLDeveloperKerberosThinConfigFile'     , 'get-SQLDeveloperKerberosThinConfigFile',
+     'set-SQLDeveloperArrayFetchSize'             , 'get-SQLDeveloperArrayFetchSize'             ,
+     'set-SQLDeveloperUseThickDriver'             , 'get-SQLDeveloperUseThickDriver'             ,
+     'set-SQLDeveloperStartupScript'              , 'get-SQLDeveloperStartupScript'              ,
+     'set-SQLDeveloperKerberosThinConfigFile'     , 'get-SQLDeveloperKerberosThinConfigFile'     ,
      'set-SQLDeveloperKerberosThinCredentialCache', 'get-SQLDeveloperKerberosThinCredentialCache',
 
      'set-SQLDeveloper_glogin'                    , 'get-SQLDeveloper_glogin'

@@ -163,12 +163,6 @@ function set-preference {
    $nsMgr     = new-object System.Xml.XmlNamespaceManager $nameTable
    $nsMgr.AddNamespace('ide', 'http://xmlns.oracle.com/ide/hash')
 
-<#
-
-   [xml] $doc = new-object xml
-   $doc.Load($productPreferencesFile)
-
-#>
    [xml] $doc = get-SQLDeveloperUserPreferencesXml
 
    [System.Xml.XmlElement] $preferences = $doc.SelectSingleNode('/ide:preferences', $nsMgr)
@@ -186,7 +180,7 @@ function set-preference {
 
    $valueElem = $hashElem.SelectSingleNode('value[@n="' + $valueName + '"]')
    if ($valueElem -eq $null) {
-      $valueElem = $doc.CreateElement('hash')
+      $valueElem = $doc.CreateElement('value')
       $valueElem.SetAttribute('n', $valueName)
       $null = $hashElem.AppendChild($valueElem)
    }
@@ -489,6 +483,27 @@ function set-SQLDeveloperStartupScript {
    set-preference DBConfig '' $newValue
 }
 
+# }
+# { ArrayFetchSize
+
+function get-SQLDeveloperArrayFetchSize {
+ #
+ # If null, defaults to 50
+ #
+   return (get-preference DBConfig ARRAYFETCHSIZE)
+}
+
+function set-SQLDeveloperArrayFetchSize {
+   param (
+      [int] $newValue
+   )
+
+   if ($newValue -lt 50 -or $newValue -gt 200) {
+      write-textInConsoleWarningColor "Value must be between 50 and 200"
+      return
+   }
+   set-preference DBConfig ARRAYFETCHSIZE $newValue
+}
 # }
 # { UseThickDriver
 
