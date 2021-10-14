@@ -334,6 +334,23 @@ function set-SQLDeveloperFontSize {
 }
 # }
 
+# { useCaseDelimitedWord
+
+function get-SQLDeveloperUseCaseDelimitedWord {
+   return (get-preference EditorOptions useCaseDelimitedWord)
+}
+
+function set-SQLDeveloperUseCaseDelimitedWord {
+
+   param (
+      [bool] $useCaseDelimitedWord
+   )
+
+   set-preference EditorOptions useCaseDelimitedWord $useCaseDelimitedWord
+}
+
+# }
+
 # }
 # { TNS_NAMES_directory
 

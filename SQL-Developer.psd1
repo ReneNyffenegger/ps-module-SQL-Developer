@@ -1,6 +1,6 @@
 @{
    RootModule        = 'SQL-Developer.psm1'
-   ModuleVersion     = '0.3'
+   ModuleVersion     = '0.4'
 
    RequiredModules   = @(
       'console'
@@ -14,8 +14,10 @@
 
      'get-SQLDeveloperDBSystemId',
 
-     'set-SQLDeveloperFontFamily'                 , 'get-SQlDeveloperFontFamily',
-     'set-SQLDeveloperFontSize'                   , 'get-SQlDeveloperfontSize',
+     'set-SQLDeveloperFontFamily'                 , 'get-SQLDeveloperFontFamily',
+     'set-SQLDeveloperFontSize'                   , 'get-SQLDeveloperfontSize',
+
+     'set-SQLDeveloperUseCaseDelimitedWord'       , 'get-SQLDeveloperUseCaseDelimitedWord',
 
      'set-SQLDeveloper_TNS_NAMES_directory'       , 'get-SQLDeveloper_TNS_NAMES_directory',
 
