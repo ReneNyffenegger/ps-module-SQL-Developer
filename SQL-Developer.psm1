@@ -1,4 +1,4 @@
-set-strictMode -version 4
+set-strictMode -version 5
 
 function get-SQLDeveloperUserInformationDirectory {
 
