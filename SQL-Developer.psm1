@@ -1,4 +1,4 @@
-set-strictMode -version 5
+set-strictMode -version 3
 
 function get-SQLDeveloperUserInformationDirectory {
 
@@ -191,6 +191,8 @@ function set-preference {
 
    $valueElem.SetAttribute('v', $newValue_)
 
+   write-xmlToFile $doc $productPreferencesFile
+<# Replaced in version 6
  #
  # Use Stream writer to control line ending:
  #
@@ -204,7 +206,7 @@ function set-preference {
 
    $doc.Save($xw)
    $sw.Close()
-
+#>
 }
 
 function get-preference {
@@ -246,6 +248,25 @@ function print-warning-unless-file-exists {
    }
 }
 
+   function write-xmlToFile {
+
+      param (
+         [xml]    $xml,
+         [string] $file
+      )
+
+      $sw = new-object System.IO.StreamWriter $file
+      $sw.NewLine = "`n"
+
+      $xw = new-object System.Xml.XmlTextWriter $sw
+      $xw.Formatting  = 'Indented'
+      $xw.IndentChar  = ' '
+      $xw.Indentation = 3
+
+      $xml.Save($xw)
+      $sw.Close()
+   }
+
 # }
 
 # { get, set a setting
@@ -284,7 +305,7 @@ function set-SQLDeveloperFontSize {
 
    set-preference FontSizeOptions fontSize $newFontSize
 
-   <#
+   <# TODO: Remove this!
 
    $nameTable = new-object System.Xml.NameTable
    $nsMgr     = new-object System.Xml.XmlNamespaceManager $nameTable
@@ -333,8 +354,7 @@ function set-SQLDeveloperFontSize {
    $doc.Save($xw)
    $sw.Close()
 
-   #>
-
+#>
 }
 # }
 
@@ -573,3 +593,32 @@ function set-SQLDeveloperKerberosThinCredentialCache {
 # }
 
 # }
+
+function add-SQLDeveloperCodeTemplate {
+
+   param(
+      [string] $abbreviation,
+      [string] $expansion
+   )
+
+   $codeTemplateFile = "$env:appdata/SQL Developer/CodeTemplate.xml"
+
+   [xml] $doc = new-object xml
+   $doc.Load($codeTemplateFile)
+
+   $rows = (select-xml -xml $doc -xPath '/rows').node
+
+   $newAbbr   = $doc.CreateElement('row'  )
+   $newKey    = $doc.CreateElement('key'  )
+   $newValue  = $doc.CreateElement('value')
+
+   $newKey.InnerText   = $abbreviation
+   $newValue.InnerText = $expansion
+
+   $null = $newAbbr.AppendChild($newKey  )
+   $null = $newAbbr.AppendChild($newValue)
+   $null = $rows.AppendChild($newAbbr)
+
+   write-xmlToFile $doc $codeTemplateFile
+
+}

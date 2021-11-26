@@ -1,6 +1,6 @@
 @{
    RootModule        = 'SQL-Developer.psm1'
-   ModuleVersion     = '0.5'
+   ModuleVersion     = '0.6'
 
    RequiredModules   = @(
       'console'
@@ -36,7 +36,9 @@
      'set-SQLDeveloperKerberosThinConfigFile'     , 'get-SQLDeveloperKerberosThinConfigFile'     ,
      'set-SQLDeveloperKerberosThinCredentialCache', 'get-SQLDeveloperKerberosThinCredentialCache',
 
-     'set-SQLDeveloper_glogin'                    , 'get-SQLDeveloper_glogin'
+     'set-SQLDeveloper_glogin'                    , 'get-SQLDeveloper_glogin'                    ,
+
+     'add-SQLDeveloperCodeTemplate'
 
    )
 
