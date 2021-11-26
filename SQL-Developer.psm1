@@ -1,4 +1,4 @@
-set-strictMode -version 3
+set-strictMode -version 4
 
 function get-SQLDeveloperUserInformationDirectory {
 
@@ -10,7 +10,11 @@ function get-SQLDeveloperUserInformationDirectory {
    }
 
    if ($dir -is [array]) {
-      write-textInConsoleErrorColor "Unable to determine user information directory uniquely"
+      write-textInConsoleErrorColor "Unable to determine user information directory uniquely, following directories were found:"
+      foreach ($d in $dir) {
+          write-host "   $d"
+      }
+
       return $null
    }
 
