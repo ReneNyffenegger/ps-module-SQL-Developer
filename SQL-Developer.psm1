@@ -620,5 +620,8 @@ function add-SQLDeveloperCodeTemplate {
    $null = $rows.AppendChild($newAbbr)
 
    write-xmlToFile $doc $codeTemplateFile
+}
 
+function remove-SQLDeveloperSystemCache {
+   remove-item "$(get-SQLDeveloperUserInformationDirectory)\System_cache" -force -recurse
 }

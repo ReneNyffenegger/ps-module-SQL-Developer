@@ -1,6 +1,6 @@
 @{
    RootModule        = 'SQL-Developer.psm1'
-   ModuleVersion     = '0.6'
+   ModuleVersion     = '0.7'
 
    RequiredModules   = @(
       'console'
@@ -38,7 +38,8 @@
 
      'set-SQLDeveloper_glogin'                    , 'get-SQLDeveloper_glogin'                    ,
 
-     'add-SQLDeveloperCodeTemplate'
+     'add-SQLDeveloperCodeTemplate',
+     'remove-SQLDeveloperSystemCache'
 
    )
 
